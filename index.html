@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>親子関係支援ラボ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Meiryo',sans-serif;color:#222;background:#fff;}
+nav{background:#1B5E7B;padding:0.75rem 0;position:sticky;top:0;z-index:100;}
+.nav-inner{max-width:860px;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.nav-logo{color:#fff;font-size:15px;font-weight:600;}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap;}
+.nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:13px;padding:4px 10px;border-radius:4px;cursor:pointer;}
+.nav-links a:hover{background:rgba(255,255,255,0.15);}
+.hero{background:linear-gradient(135deg,#1B5E7B 0%,#2E7D5E 100%);color:#fff;padding:3.5rem 1rem 3rem;text-align:center;}
+.hero h1{font-size:26px;font-weight:600;margin-bottom:0.75rem;line-height:1.5;}
+.hero p{font-size:15px;opacity:0.9;max-width:520px;margin:0 auto 1.5rem;line-height:1.8;}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.4);color:#fff;font-size:12px;padding:4px 14px;border-radius:20px;margin-bottom:1rem;}
+.btn{display:inline-block;background:#fff;color:#1B5E7B;font-size:14px;font-weight:600;padding:10px 24px;border-radius:6px;text-decoration:none;cursor:pointer;border:none;}
+.btn:hover{opacity:0.9;}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.6);color:#fff;margin-left:8px;}
+.site{max-width:860px;margin:0 auto;padding:0 1rem;}
+section{padding:2.5rem 0;}
+.section-title{font-size:20px;font-weight:600;color:#1B5E7B;margin-bottom:0.5rem;}
+.section-sub{font-size:14px;color:#666;margin-bottom:1.5rem;}
+.divider{height:1px;background:#e0e0e0;margin-bottom:2rem;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;}
+.card{background:#fff;border:1px solid #e0e0e0;border-radius:12px;padding:1.25rem;}
+.card-icon{width:36px;height:36px;border-radius:8px;background:#E1F5EE;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+.card-icon svg{width:18px;height:18px;}
+.card h3{font-size:14px;font-weight:600;margin-bottom:6px;color:#222;}
+.card p{font-size:13px;color:#666;line-height:1.6;}
+.policy-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.policy-list li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.6;}
+.policy-dot{width:6px;height:6px;border-radius:50%;background:#2E7D5E;flex-shrink:0;margin-top:7px;}
+.consult-box{background:#f7f7f5;border-radius:12px;padding:1.5rem;border:1px solid #e0e0e0;}
+.consult-box h3{font-size:16px;font-weight:600;margin-bottom:0.5rem;}
+.consult-box p{font-size:14px;color:#555;line-height:1.7;margin-bottom:1rem;}
+.free-badge{display:inline-block;background:#E1F5EE;color:#0F6E56;font-size:12px;font-weight:600;padding:3px 10px;border-radius:4px;margin-bottom:0.75rem;}
+.profile-box{display:flex;gap:1.25rem;align-items:flex-start;flex-wrap:wrap;}
+.avatar{width:64px;height:64px;border-radius:50%;background:#1B5E7B;color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;flex-shrink:0;}
+.profile-info h3{font-size:16px;font-weight:600;margin-bottom:4px;}
+.profile-info .title{font-size:13px;color:#888;margin-bottom:0.75rem;}
+.profile-info p{font-size:14px;line-height:1.7;color:#555;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.contact-item{background:#f7f7f5;border-radius:8px;padding:1rem;}
+.contact-label{font-size:12px;color:#999;margin-bottom:4px;}
+.contact-value{font-size:14px;font-weight:600;}
+.contact-form{margin-top:1.5rem;}
+.contact-form label{display:block;font-size:13px;color:#555;margin-bottom:4px;margin-top:12px;}
+.contact-form input,.contact-form textarea{width:100%;font-size:14px;padding:8px 10px;border:1px solid #ccc;border-radius:8px;background:#fff;color:#222;font-family:inherit;}
+.contact-form textarea{height:100px;resize:vertical;}
+.submit-btn{margin-top:12px;background:#1B5E7B;color:#fff;border:none;padding:10px 24px;border-radius:6px;font-size:14px;cursor:pointer;font-family:inherit;}
+.submit-btn:hover{background:#154f68;}
+.info-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem;}
+.info-chip{background:#f0f0ee;border:1px solid #e0e0e0;border-radius:4px;font-size:12px;padding:3px 10px;color:#666;}
+footer{background:#1B5E7B;color:rgba(255,255,255,0.85);text-align:center;padding:1.5rem 1rem;font-size:13px;margin-top:1rem;}
+@media(max-width:600px){
+  .hero h1{font-size:20px;}
+  .contact-grid{grid-template-columns:1fr;}
+  .nav-links a{font-size:11px;padding:3px 7px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">親子関係支援ラボ</span>
+    <div class="nav-links">
+      <a href="#top">トップ</a>
+      <a href="#activities">活動内容</a>
+      <a href="#consult">相談窓口</a>
+      <a href="#profile">代表プロフィール</a>
+      <a href="#contact">お問い合わせ</a>
+    </div>
+  </div>
+</nav>
+
+<div id="top" class="hero">
+  <div class="hero-badge">令和18年3月設立</div>
+  <h1>親子関係に関する課題を、<br>対話と整理で解決へ</h1>
+  <p>親子関係支援ラボは、親子関係に関する課題について整理・支援を行い、適正な手続きと関係の維持・再構築に寄与することを目的とした団体です。</p>
+  <a href="#consult" class="btn">相談を申し込む</a>
+  <a href="#activities" class="btn btn-outline">活動内容を見る</a>
+</div>
+
+<div class="site">
+
+  <section>
+    <div class="section-title">団体について</div>
+    <div class="section-sub">設立の背景と基本方針</div>
+    <div class="divider"></div>
+    <p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:1rem;">本団体は、行政手続きにおける親子断絶問題を個人の経験をきっかけに設立されました。同様の課題を抱える当事者への支援および制度理解の促進を図ることを目的とし、対立ではなく対話と整理による解決を重視しています。</p>
+    <ul class="policy-list">
+      <li><span class="policy-dot"></span><span>特定の機関や個人との対立を目的とするものではない</span></li>
+      <li><span class="policy-dot"></span><span>事実および手続きに基づいた適正な関係構築と改善に資することを基本方針とする</span></li>
+      <li><span class="policy-dot"></span><span>当事者の一方的な主張に依拠することなく、客観的な事実および手続きの検証を重視する</span></li>
+
+    </ul>
+    <div class="info-row">
+      <span class="info-chip">所在地：滋賀県蒲生郡日野町大窪868</span>
+      <span class="info-chip">代表：松村貴士</span>
+      <span class="info-chip">設立：令和18年3月23日</span>
+    </div>
+  </section>
+
+  <section id="activities">
+    <div class="section-title">活動内容</div>
+    <div class="section-sub">5つの柱で親子関係を支援します</div>
+    <div class="divider"></div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>相談受付・情報提供</h3>
+        <p>親子関係に関する相談を受け付け、適切な情報をご提供します。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h3>行政手続きの支援</h3>
+        <p>申立書・情報公開請求等の作成をサポートします。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>事例の収集・分析</h3>
+        <p>類似する課題の事例を収集・分析し、支援に活かします。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <h3>情報発信</h3>
+        <p>インターネット・SNS等を通じて広く情報を発信します。</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0F6E56" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>関係機関との連携</h3>
+        <p>関係機関との連携および意見交換を行います。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="consult">
+    <div class="section-title">相談窓口</div>
+    <div class="section-sub">ご相談はお問い合わせフォームよりどうぞ</div>
+    <div class="divider"></div>
+    <div class="consult-box">
+      <h3>ご相談を承っております</h3>
+      <p>親子関係に関する課題や手続きについて、まずはお話を聞かせてください。当事者の声に寄り添い、客観的な事実と手続きに基づいてともに整理してまいります。一方的な主張ではなく、対話と理解を通じた解決を大切にしています。</p>
+      <p style="font-size:13px;margin-bottom:0.75rem;">▶ 下記「お問い合わせ」フォームよりご連絡ください。</p>
+      <a href="#contact" class="btn" style="background:#1B5E7B;color:#fff;font-size:13px;padding:8px 18px;">お問い合わせフォームへ</a>
+    </div>
+  </section>
+
+  <section id="profile">
+    <div class="section-title">代表プロフィール</div>
+    <div class="section-sub">松村 貴士</div>
+    <div class="divider"></div>
+    <div class="profile-box">
+      <div class="avatar">松</div>
+      <div class="profile-info">
+        <h3>松村 貴士（まつむら たかし）</h3>
+        <div class="title">親子関係支援ラボ 代表</div>
+        <p>行政手続きにおける親子断絶問題を個人の経験をきっかけに、令和18年3月に「親子関係支援ラボ」を設立。同様の課題を抱える当事者への支援および制度理解の促進を図ることを目的として活動しています。対立ではなく、対話と整理による問題解決を重視し、客観的な事実・手続きに基づいた支援を続けています。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-title">お問い合わせ</div>
+    <div class="section-sub">ご相談・お問い合わせはこちら</div>
+    <div class="divider"></div>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-label">団体名</div>
+        <div class="contact-value">親子関係支援ラボ</div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">代表</div>
+        <div class="contact-value">松村 貴士</div>
+      </div>
+      <div class="contact-item" style="grid-column:1/-1;">
+        <div class="contact-label">所在地</div>
+        <div class="contact-value">滋賀県蒲生郡日野町大窪868</div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <label>お名前</label>
+      <input type="text" placeholder="山田 太郎">
+      <label>メールアドレス</label>
+      <input type="email" placeholder="example@email.com">
+      <label>件名</label>
+      <input type="text" placeholder="相談内容のタイトル">
+      <label>お問い合わせ内容</label>
+      <textarea placeholder="ご相談やお問い合わせ内容をご記入ください。"></textarea>
+      <button class="submit-btn">送信する</button>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>© 親子関係支援ラボ　代表：松村貴士　滋賀県蒲生郡日野町大窪868</p>
+  <p style="margin-top:4px;font-size:12px;opacity:0.7;">お気軽にお問い合わせください。</p>
+</footer>
+
+</body>
+</html>
